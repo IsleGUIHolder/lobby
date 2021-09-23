@@ -1,0 +1,167 @@
+-- if yo ass gonna use this atleast credit me
+
+print("Made by alive guy!")
+
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/GreenDeno/Venyx-UI-Library/main/source.lua"))()
+local venyx = library.new("Venyx", 5013109572)
+
+-- themes
+local themes = {
+Background = Color3.fromRGB(24, 24, 24),
+Glow = Color3.fromRGB(0, 0, 0),
+Accent = Color3.fromRGB(10, 10, 10),
+LightContrast = Color3.fromRGB(20, 20, 20),
+DarkContrast = Color3.fromRGB(14, 14, 14),  
+TextColor = Color3.fromRGB(255, 255, 255)
+}
+
+-- first page
+local page = venyx:addPage("LobbyGui", 5012544693)
+local section1 = page:addSection("Ascend")
+local section2 = page:addSection("B6")
+local page2 = venyx:addPage("Settings")
+local section3 = page2:addSection("Close")
+
+section3:addKeybind("Open", Enum.KeyCode.Z, function()
+    venyx:toggle()
+end,function()
+print("changed")
+end)
+
+section1:addButton("Ascend", function()
+    local animation = Instance.new("Animation")
+    animation.AnimationId = "rbxassetid://3891902499"
+    local animation2 = Instance.new("Animation")
+    animation2.AnimationId = "rbxassetid://3891911500"
+    
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    humanoid.Parent.HumanoidRootPart.Anchored = true
+    humanoid.WalkSpeed = 0
+    humanoid.JumpPower = 0
+    
+    local load1 = humanoid:LoadAnimation(animation)
+    local load2 = humanoid:LoadAnimation(animation2)
+    
+    load1:Play()
+    
+    load1.Stopped:Wait()
+    
+    load2:Play()
+    wait(5)
+    humanoid.Health = 0
+    animation:Destroy()
+    animation2:Destroy()
+end)
+
+section2:addButton("Appear", function()
+    local animation = Instance.new("Animation")
+animation.AnimationId = "rbxassetid://4369181365"
+local animation2 = Instance.new("Animation")
+animation2.AnimationId = "rbxassetid://4369189637"
+
+local load = game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(animation)
+local load2 = game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(animation2)
+
+local humanoid = game.Players.LocalPlayer.Character.Humanoid
+humanoid.WalkSpeed = 0
+humanoid.JumpPower = 0 
+
+load:Play()
+
+wait(2)
+
+load:Stop()
+
+load2:Play()
+wait(4)
+animation:Destroy()
+animation2:Destroy()
+humanoid.WalkSpeed = 16
+humanoid.JumpPower = 50 
+end)
+
+section2:addButton("Throw", function()
+local anim = Instance.new("Animation")
+anim.AnimationId = "rbxassetid://4465548987"
+
+local load = game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(anim)
+
+local humanoid = game.Players.LocalPlayer.Character.Humanoid
+humanoid.WalkSpeed = 0
+humanoid.JumpPower = 0
+
+load:Play()
+
+load.Stopped:Wait()
+
+humanoid.WalkSpeed = 16
+humanoid.JumpPower = 50
+anim:Destroy()
+end)
+
+section2:addButton("Attack", function()
+    local anim = Instance.new("Animation")
+    anim.AnimationId = "rbxassetid://3934907709"
+    
+    local load = game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(anim)
+    
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    humanoid.WalkSpeed = 0
+    humanoid.JumpPower = 0
+    
+    load:Play()
+    
+    load.Stopped:Wait()
+    
+    humanoid.WalkSpeed = 16
+    humanoid.JumpPower = 50
+    anim:Destroy()
+    end)
+
+    section2:addButton("Shockwave", function()
+        local anim = Instance.new("Animation")
+        anim.AnimationId = "rbxassetid://4531283905"
+        
+        local load = game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(anim)
+        
+        local humanoid = game.Players.LocalPlayer.Character.Humanoid
+        humanoid.WalkSpeed = 0
+        humanoid.JumpPower = 0
+        
+        load:Play()
+        
+        load.Stopped:Wait()
+        
+        humanoid.WalkSpeed = 25
+        humanoid.JumpPower = 50
+        wait(5)
+        humanoid.WalkSpeed = 16
+        anim:Destroy()
+    end)
+    
+getgenv().Block = false
+    local animblock = Instance.new("Animation")
+        animblock.AnimationId = "rbxassetid://4531252937"
+    local load1 = game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(animblock)
+
+    
+local function UpdateBlock()
+   if getgenv().Block == true then
+        load1:Play()
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 10
+       else
+       load1:Stop()
+       game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+    end
+end
+    
+section2:addButton("Block", function()
+    if getgenv().Block then
+        getgenv().Block = false
+            UpdateBlock()
+        else
+            getgenv().Block = true
+            UpdateBlock()
+    end
+end)
+venyx:SelectPage(venyx.pages[1], true)
