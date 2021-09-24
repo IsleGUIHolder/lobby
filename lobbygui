@@ -62,6 +62,10 @@ animation2.AnimationId = "rbxassetid://4369189637"
 local load = game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(animation)
 local load2 = game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(animation2)
 
+game.Players.LocalPlayer.Character.Parent = nil
+wait(2)
+game.Players.LocalPlayer.Character.Parent = workspace
+
 local humanoid = game.Players.LocalPlayer.Character.Humanoid
 humanoid.WalkSpeed = 0
 humanoid.JumpPower = 0 
